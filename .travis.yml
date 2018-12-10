@@ -1,0 +1,32 @@
+language: node_js
+node_js:
+  - stable
+
+addons:
+  chrome: stable
+
+branches:
+  except:
+    - gh-pages
+
+jobs:
+  include:
+    - stage: Test
+      script:
+        - npm run lint
+        - npm run test
+    - stage: E2E
+      script: npm run e2e
+    - stage: Publish gh-pages
+      script:
+        - npm run build
+        - touch dist/film-finder/.nojekyll
+      deploy:
+        repo: ffindr/ffindr.github.io
+        target-branch: master
+        provider: pages
+        local_dir: dist/film-finder
+        skip_cleanup: true
+        github_token: $GITHUB_TOKEN
+        on:
+          branch: master
