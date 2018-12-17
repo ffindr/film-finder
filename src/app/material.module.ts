@@ -6,6 +6,10 @@ import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatButtonModule } from '@angular/material/button';
+
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   imports: [
@@ -13,14 +17,20 @@ import { MatChipsModule } from '@angular/material/chips';
     MatTableModule,
     MatInputModule,
     MatCardModule,
-    MatChipsModule
+    MatChipsModule,
+    MatButtonModule,
+    FontAwesomeModule,
+    FlexLayoutModule
   ],
   exports: [
     MatToolbarModule,
     MatTableModule,
     MatInputModule,
     MatCardModule,
-    MatChipsModule
+    MatChipsModule,
+    MatButtonModule,
+    FontAwesomeModule,
+    FlexLayoutModule
   ]
 })
 export class MaterialModule { }

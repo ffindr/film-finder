@@ -1,5 +1,12 @@
-<mat-toolbar>
+<mat-toolbar color="primary">
   <span>FilmFinder</span>
+  <span fxFlex></span>
+  <a class="mat-button" target="_blank" href="https://github.com/ffindr/film-finder">
+    <button mat-button>
+        <fa-icon [icon]="faGithub"></fa-icon>
+        GitHub
+    </button>
+  </a>
 </mat-toolbar>
 
 <div class="container">
@@ -10,8 +17,8 @@
 
   <ng-container *ngIf="dxCode.isValid">
     <mat-card>
-      <mat-card-subtitle>DX Encoding</mat-card-subtitle>
-      <p i18n>ISO 1007 Standard for marking 135 and APS photographic film and film cartridges.</p>
+      <mat-card-title>DX Encoding</mat-card-title>
+      <mat-card-content i18n>ISO 1007 Standard for marking 135 and APS photographic film and film cartridges.</mat-card-content>
       <mat-chip-list>
         <ng-container *ngFor="let m of dxCode.manufacturer">
           <mat-chip>{{m}}</mat-chip>
@@ -26,7 +33,6 @@
   </ng-container>
 
   <table mat-table *ngIf="tableItems?.length > 0" [dataSource]="tableItems" class="mat-elevation-z8">
-
     <ng-container matColumnDef="manufacturer">
       <th mat-header-cell *matHeaderCellDef i18n>Manufacturer</th>
       <td mat-cell *matCellDef="let element">{{element.manufacturer}}</td>
@@ -40,5 +46,21 @@
     <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: tableColumns;"></tr>
   </table>
+
+  <ng-container *ngIf="tableItems?.length < 1 && !dxCode.isValid">
+    <mat-card>
+      <mat-card-title i18n>Not found what you're looking for?</mat-card-title>
+      <mat-card-content i18n>
+        This app is <a target="_blank" href="https://github.com/ffindr/film-finder" i18n>Open Source</a> help us improving it.
+        For example you can add entries to our <a target="_blank" href="https://github.com/ffindr/dxcode-film-db/tree/master/data" i18n>DX-Code Database</a>.
+      </mat-card-content>
+      <mat-card-subtitle i18n>Examples:</mat-card-subtitle>
+      <mat-card-content>
+        <ul>
+          <li i18n>Search for the DX-Code "000192".</li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+  </ng-container>
 
 </div>

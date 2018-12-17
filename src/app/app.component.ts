@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
+
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
+
 import DxEncoding from 'dxcode-film-db';
 import DxCodes from 'dxcode-film-db/data/dxcodes.json';
 
@@ -23,6 +26,8 @@ export interface TableItem {
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
+  faGithub = faGithub;
+
   dxCode = new DxCodeData();
   tableColumns: string[] = ['manufacturer', 'product'];
   tableItems: TableItem[] = [];
